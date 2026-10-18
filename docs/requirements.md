@@ -47,12 +47,16 @@ Contact セクションは設けない。
 
 作品データは Markdown（frontmatter 付き）で管理し、追加はファイルを置くだけで済むようにする。
 
-## Skills（下書き・要確認）
+## Skills
 
 - 言語: TypeScript, JavaScript, Go, HTML, CSS
 - フロントエンド: React, Next.js (App Router), Tailwind CSS, shadcn/ui, Three.js / React Three Fiber
-- バックエンド・インフラ: WebSocket, Redis, Vercel, GitHub Actions
+- バックエンド・インフラ: WebSocket, Redis, Docker, Vercel, GitHub Actions
 - テスト・品質: Vitest, Testing Library, Storybook, Playwright, Biome, Sentry
+- AI: Claude Code, Orca, Agentastic
+- ツール: Git / GitHub, Linear, Figma
+
+Slack・Teams・Notion・Backlog など、コミュニケーションや社内ドキュメント用のツールは載せない。
 
 ## 3D・アニメーション
 
