@@ -43,7 +43,7 @@ Contact セクションは設けない。
 |---|---|---|---|
 | pdf-merge-app | ブラウザ内（Web Worker）で完結する PDF 結合ツール | Next.js 16, React 19, pdf-lib, Vitest, Storybook, Playwright | https://pdf-merge.app |
 | hibari | Go 製リアルタイムチャット | Go, WebSocket, Redis Pub/Sub, Next.js | リポジトリのみ |
-| ichirizuka | ランニング記録の個人ダッシュボード（チャートライブラリ不使用） | Next.js 16, Google Sheets (CSV) | https://ichirizuka.vercel.app |
+| ichirizuka | ランニング記録の個人ダッシュボード（チャートライブラリ不使用） | Next.js 16, Google Sheets (CSV) | なし（サイトは Basic 認証付きのため。スクリーンショットのみ） |
 | pylabo | ブラウザだけで動く Python 学習アプリ（Pyodide 同梱、その場で実行・自動採点） | Vite, React 19, TypeScript, Pyodide (Web Worker), CodeMirror 6 | https://pylabo.vercel.app / リポジトリ |
 
 作品データは Markdown（frontmatter 付き）で管理し、追加はファイルを置くだけで済むようにする。

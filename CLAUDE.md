@@ -42,7 +42,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - 表示名はハンドル名（shun2218）。日本語のみ（将来英語対応の可能性あり）
 - Contact セクションなし。GitHub リンクをヘッダー・フッターに置く
 - 掲載作品: pdf-merge-app / hibari / ichirizuka / pylabo
-  - ichirizuka: サイトリンクなし（スクショのみ）
+  - ichirizuka: サイトリンクなし（スクショのみ）。サイト自体はあるが Basic 認証付きのため載せない
   - hibari: リポジトリリンク＋構成説明
   - pylabo: サイトリンク（https://pylabo.vercel.app）＋リポジトリリンク
 - 技術: Next.js（App Router, static export）+ TypeScript、React Three Fiber、GSAP + Lenis、Tailwind CSS、Biome、Vitest、Playwright、pnpm、GitHub Actions で Pages デプロイ
