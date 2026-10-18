@@ -11,6 +11,7 @@ export const site = {
   ],
   labels: {
     mainNav: "メイン",
+    mobileNav: "メニュー",
     openMenu: "メニューを開く",
     closeMenu: "メニューを閉じる",
   },
