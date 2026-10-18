@@ -14,6 +14,11 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 要件定義 → Claude Design でデザイン → レビュー承認 → 実装。
 デザインは承認済み（2026-10-19）。実装フェーズ（SHU-7 以降）。
 
+## デプロイ
+
+- `main` への push で `.github/workflows/deploy.yml` が `pnpm build` の `out/` を GitHub Pages に公開する（Pages のソースは GitHub Actions）
+- 公開 URL: https://shun2218-dev.github.io/
+
 ## コマンド
 
 - `pnpm dev` / `pnpm build`（`out/` に static export）/ `pnpm lint`（Biome）/ `pnpm typecheck` / `pnpm test`（Vitest）
@@ -31,6 +36,8 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - ブランチ名に Issue ID を含める（例: `shu-7-setup`）
 - PR 本文に `Fixes SHU-xx` を書き、マージ時に自動クローズ（Linear の GitHub 連携は有効）
 - コミット・PR は日本語タイトル可。Conventional Commits 風の prefix（`docs:`, `chore:`, `feat:` など）
+- `main` はブランチ保護あり（管理者にも適用）: 直接 push 不可、PR 経由でのみマージ（承認 0 件で可）、CI「Lint / Typecheck / Test / Build」の成功とコメントの解決が必須、force push・削除は禁止
+- マージは squash
 
 ## デザイン（SHU-6、承認済み）
 

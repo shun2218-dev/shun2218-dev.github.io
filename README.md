@@ -21,6 +21,12 @@ Next.js（App Router, static export）+ TypeScript で作り、GitHub Pages で�
 | `pnpm typecheck` | ルートの型を生成して型チェックする |
 | `pnpm test` | Vitest でユニットテストを実行する |
 
+## デプロイ
+
+`main` に push（PR をマージ）すると、GitHub Actions がビルドして GitHub Pages に公開する。手動で実行するときは Actions の「Deploy」から `Run workflow` を押す。
+
+公開 URL: https://shun2218-dev.github.io/
+
 ## ドキュメント
 
 - 要件: `docs/requirements.md`
