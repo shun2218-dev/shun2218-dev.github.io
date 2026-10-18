@@ -12,7 +12,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 ## 進め方
 
 要件定義 → Claude Design でデザイン → レビュー承認 → 実装。
-**実装はまだ始めない（デザイン承認待ち）。**
+デザインは承認済み（2026-10-19）。実装フェーズ（SHU-7 以降）。
 
 ## タスク管理（Linear）
 
@@ -26,15 +26,16 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - PR 本文に `Fixes SHU-xx` を書き、マージ時に自動クローズ（Linear の GitHub 連携は有効）
 - コミット・PR は日本語タイトル可。Conventional Commits 風の prefix（`docs:`, `chore:`, `feat:` など）
 
-## デザイン（SHU-6、レビュー待ち）
+## デザイン（SHU-6、承認済み）
 
+- 詳細なトークン（色・タイポグラフィ・余白）は `docs/design.md`
 - Claude Design: https://claude.ai/artifact/KvvGATFSecqJ1JaE7YrRYE
 - 画面: Top / Desktop、Work Detail / Desktop（pdf-merge-app 例）、Top / Mobile
 - 色: 背景 `#0A0A0A`、文字 `#E8E6E1`、本文グレー `#A3A09A` / `#B8B5AE`、補助 `#8A8780`、アクセント（ゴールド）`#C9A96E`、罫線 `rgba(255,255,255,0.06〜0.1)`
-- フォント: 英字見出し Syne、和文 Noto Sans JP 300、ラベル・番号 JetBrains Mono
+- フォント: 英字見出し Cormorant Garamond 300（ロゴのみ 500）、和文 Noto Sans JP 300、ラベル・番号 JetBrains Mono
+  - Syne は太く丸く見えてシックさに欠けるため不採用。見出しは細身で統一する
 - 薄い縦グリッド線（6 分割）、セクション番号 01/02/03、広い余白
 - 仮置き: キャッチコピー・About 文・スクリーンショット
-- 承認後、リンクとトークンを `docs/design.md` にまとめた PR で SHU-6 をクローズする
 
 ## 確定事項
 
