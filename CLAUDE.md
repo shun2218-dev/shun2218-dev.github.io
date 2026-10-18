@@ -41,9 +41,10 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 
 - 表示名はハンドル名（shun2218）。日本語のみ（将来英語対応の可能性あり）
 - Contact セクションなし。GitHub リンクをヘッダー・フッターに置く
-- 掲載作品: pdf-merge-app / hibari / ichirizuka
+- 掲載作品: pdf-merge-app / hibari / ichirizuka / pylabo
   - ichirizuka: サイトリンクなし（スクショのみ）
   - hibari: リポジトリリンク＋構成説明
+  - pylabo: サイトリンク（https://pylabo.vercel.app）＋リポジトリリンク
 - 技術: Next.js（App Router, static export）+ TypeScript、React Three Fiber、GSAP + Lenis、Tailwind CSS、Biome、Vitest、Playwright、pnpm、GitHub Actions で Pages デプロイ
 - `package.json` の name は `shun2218-dev.github.io`（Linear のプロジェクト名は「Portfolio Site」のまま）
 - Hero の 3D はノイズで揺らぐ球体＋パーティクル
