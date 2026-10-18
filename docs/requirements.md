@@ -14,7 +14,7 @@
 
 - コンセプト: 静かな黒に、ゆっくり動く幾何学
 - 配色: 背景 `#0a0a0a` 前後の深い黒、文字はオフホワイトとグレー、アクセントはゴールド系 1 色
-- タイポグラフィ: 英字は幾何学的なサンセリフ、和文は Noto Sans JP の細めのウェイト
+- タイポグラフィ: 英字見出しは細身のセリフ体（Cormorant Garamond）、和文は Noto Sans JP の細めのウェイト（詳細は `docs/design.md`）
 - 余白を広く取り、細い罫線・グリッドで締める
 - デザインは Claude Design（Design アーティファクト）で作成し、承認後に実装する
 
@@ -43,16 +43,21 @@ Contact セクションは設けない。
 |---|---|---|---|
 | pdf-merge-app | ブラウザ内（Web Worker）で完結する PDF 結合ツール | Next.js 16, React 19, pdf-lib, Vitest, Storybook, Playwright | https://pdf-merge.app |
 | hibari | Go 製リアルタイムチャット | Go, WebSocket, Redis Pub/Sub, Next.js | リポジトリのみ |
-| ichirizuka | ランニング記録の個人ダッシュボード（チャートライブラリ不使用） | Next.js 16, Google Sheets (CSV) | https://ichirizuka.vercel.app |
+| ichirizuka | ランニング記録の個人ダッシュボード（チャートライブラリ不使用） | Next.js 16, Google Sheets (CSV) | なし（サイトは Basic 認証付きのため。スクリーンショットのみ） |
+| pylabo | ブラウザだけで動く Python 学習アプリ（Pyodide 同梱、その場で実行・自動採点） | Vite, React 19, TypeScript, Pyodide (Web Worker), CodeMirror 6 | https://pylabo.vercel.app / リポジトリ |
 
 作品データは Markdown（frontmatter 付き）で管理し、追加はファイルを置くだけで済むようにする。
 
-## Skills（下書き・要確認）
+## Skills
 
-- 言語: TypeScript, JavaScript, Go, HTML, CSS
-- フロントエンド: React, Next.js (App Router), Tailwind CSS, shadcn/ui, Three.js / React Three Fiber
-- バックエンド・インフラ: WebSocket, Redis, Vercel, GitHub Actions
+- 言語: TypeScript, JavaScript, Go, Python, HTML, CSS
+- フロントエンド: React, Next.js (App Router), Vite, Tailwind CSS, shadcn/ui, Three.js / React Three Fiber
+- バックエンド・インフラ: WebSocket, Redis, Docker, Vercel, GitHub Actions
 - テスト・品質: Vitest, Testing Library, Storybook, Playwright, Biome, Sentry
+- AI: Claude Code, Orca, Agentastic
+- ツール: Git / GitHub, Linear, Figma
+
+Slack・Teams・Notion・Backlog など、コミュニケーションや社内ドキュメント用のツールは載せない。
 
 ## 3D・アニメーション
 
