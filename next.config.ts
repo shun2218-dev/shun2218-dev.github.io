@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   turbopack: {
     rules: {
       "*.css": {
+        // next/font が生成する CSS（Next.js 内部扱い）まで通すと dev でフォントの URL が壊れるため、自前の CSS だけに限る
+        condition: { not: "foreign" },
         loaders: ["@tailwindcss/turbopack"],
         as: "*.css",
       },
