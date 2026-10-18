@@ -14,6 +14,12 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 要件定義 → Claude Design でデザイン → レビュー承認 → 実装。
 デザインは承認済み（2026-10-19）。実装フェーズ（SHU-7 以降）。
 
+## コマンド
+
+- `pnpm dev` / `pnpm build`（`out/` に static export）/ `pnpm lint`（Biome）/ `pnpm typecheck` / `pnpm test`（Vitest）
+- Next.js 16 は学習データと API が異なる場合がある。コードを書く前に `node_modules/next/dist/docs/` の該当ガイドを読む（`AGENTS.md`）
+- static export のため Cache Components・Server Actions・Route Handlers・画像最適化などのサーバー機能は使わない
+
 ## タスク管理（Linear）
 
 - チーム: Shun2218-dev（key: `SHU`）、プロジェクト: Portfolio Site

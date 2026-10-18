@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* デザイントークンと共通レイアウトは SHU-10 で docs/design.md に沿って定義する */
+:root {
+  --background: #0a0a0a;
+  --foreground: #e8e6e1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
