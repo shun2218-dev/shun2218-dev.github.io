@@ -5,7 +5,14 @@ import { site } from "@/lib/site";
 import { getWorks } from "@/lib/works";
 
 export function Works() {
-  const works = getWorks().map(({ body: _body, ...work }) => work);
+  // クライアントに渡すのは一覧に要る項目だけにする
+  const works = getWorks().map(({ slug, no, title, summary, tags }) => ({
+    slug,
+    no,
+    title,
+    summary,
+    tags,
+  }));
   return (
     <section
       id="works"
