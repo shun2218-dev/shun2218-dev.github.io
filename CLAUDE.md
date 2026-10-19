@@ -28,8 +28,10 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 ## タスク管理（Linear）
 
 - チーム: Shun2218-dev（key: `SHU`）、プロジェクト: Portfolio Site
-- 起票・参照は GraphQL API（`https://api.linear.app/graphql`）経由
-- API キーはリポジトリ直下の `.env` の `LINEAR_API_KEY`（gitignore 済み。値は表示しない）
+- 起票・参照・更新は Orca CLI（`orca linear ...`）経由。手順は `orca-linear` スキル（グローバル導入済み）に従い、最初に `orca skills get orca-linear` で版の合ったガイドを読む
+- ワークスペース ID: `957c796e-66ea-4718-aca9-09bcc6ba17d1`、チーム key: `SHU`
+- API キーや `.env` は使わない（Orca が認証を持つ）
+- `orca-linear` スキルにある「`runtime_access_denied` なら権限を上げて再実行」は自動で従わず、ユーザーに確認する
 
 ## Git / PR
 
