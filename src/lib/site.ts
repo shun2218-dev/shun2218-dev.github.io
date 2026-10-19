@@ -23,6 +23,44 @@ export const site = {
     lead: "フロントエンドを中心に、Next.js と TypeScript で Web アプリケーションを作っています。",
     body: "テスト、CI、パフォーマンスまで含めて、長く保守できるプロダクトづくりを大切にしています。設計の判断は ADR に残し、触って気持ちのいい UI と、それを支える堅い土台の両方を目指しています。",
   },
+  skills: {
+    no: "02",
+    title: "Skills",
+    groups: [
+      {
+        label: "Languages",
+        items: ["TypeScript", "JavaScript", "Go", "Python", "HTML / CSS"],
+      },
+      {
+        label: "Frontend",
+        items: [
+          "React",
+          "Next.js",
+          "Vite",
+          "Tailwind CSS",
+          "shadcn/ui",
+          "Three.js / R3F",
+        ],
+      },
+      {
+        label: "Backend / Infra",
+        items: ["WebSocket", "Redis", "Docker", "Vercel", "GitHub Actions"],
+      },
+      {
+        label: "Quality",
+        items: [
+          "Vitest",
+          "Testing Library",
+          "Storybook",
+          "Playwright",
+          "Biome",
+          "Sentry",
+        ],
+      },
+      { label: "AI", items: ["Claude Code", "Orca", "Agentastic"] },
+      { label: "Tools", items: ["Git / GitHub", "Linear", "Figma"] },
+    ],
+  },
   labels: {
     mainNav: "メイン",
     mobileNav: "メニュー",
