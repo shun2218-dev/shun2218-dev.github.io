@@ -86,7 +86,7 @@ export function WorkCard({ work }: Props) {
         className="-order-1 transition-transform duration-700 ease-out motion-reduce:transition-none md:order-none md:col-span-5 md:col-start-8"
       >
         <div className="overflow-hidden border border-white/8">
-          <ScreenshotPlaceholder className="aspect-16/10 transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none" />
+          <ScreenshotPlaceholder className="aspect-16/10 transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
         </div>
       </div>
     </Link>
