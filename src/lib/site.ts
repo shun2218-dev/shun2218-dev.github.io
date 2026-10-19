@@ -9,6 +9,13 @@ export const site = {
     { label: "Skills", href: "/#skills" },
     { label: "Works", href: "/#works" },
   ],
+  hero: {
+    eyebrow: "Frontend Engineer — Portfolio",
+    eyebrowShort: "Frontend Engineer",
+    // 仮置きのキャッチコピー
+    tagline: "確かな設計と、手触りのいいインターフェースを。",
+    scroll: "Scroll",
+  },
   labels: {
     mainNav: "メイン",
     mobileNav: "メニュー",
