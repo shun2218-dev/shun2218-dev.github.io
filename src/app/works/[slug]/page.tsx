@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { WorkDetail } from "@/components/works/WorkDetail";
+import { ogImage } from "@/lib/og/images";
 import { getWork, getWorks } from "@/lib/works";
 
 // static export のため、作品ファイルから生成したページ以外は 404 にする
@@ -16,7 +17,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const found = getWork(slug);
   if (!found) return {};
-  return { title: found.work.title, description: found.work.lead };
+  const { work } = found;
+  const image = `/og/works/${work.slug}.png`;
+  return {
+    title: work.title,
+    description: work.lead,
+    openGraph: {
+      type: "article",
+      title: work.title,
+      description: work.lead,
+      url: `/works/${work.slug}/`,
+      images: [{ url: image, ...ogImage, alt: work.title }],
+    },
+    // openGraph と同じく、layout の画像を引き継がないよう作品の画像で上書きする
+    twitter: { card: "summary_large_image", images: [image] },
+  };
 }
 
 export default async function WorkPage({ params }: PageProps<"/works/[slug]">) {
