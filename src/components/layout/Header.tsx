@@ -88,6 +88,8 @@ export function Header() {
         aria-label={site.labels.mobileNav}
         aria-hidden={!open}
         inert={!open}
+        // 開いているあいだ背面を慣性スクロールさせない
+        data-lenis-prevent
         className={`fixed inset-0 z-10 flex flex-col justify-between bg-background px-page pt-28 pb-10 transition-[opacity,visibility] duration-500 ease-out motion-reduce:transition-none md:hidden ${open ? "visible opacity-100" : "invisible opacity-0"}`}
       >
         <ul className="flex flex-col">

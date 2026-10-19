@@ -6,7 +6,9 @@ import {
 } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { SmoothScroll } from "@/components/scroll/SmoothScroll";
 import { site } from "@/lib/site";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -41,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${cormorant.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <SmoothScroll />
         <Header />
         {children}
         <Footer />
