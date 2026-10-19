@@ -14,6 +14,7 @@ import {
   sphereFragmentShader,
   sphereVertexShader,
 } from "@/components/hero/shaders";
+import { REDUCED_MOTION, useMediaQuery } from "@/hooks/useMediaQuery";
 
 // ShaderMaterial は色空間変換を通さないため、sRGB の値をそのまま渡す
 const toVec3 = (hex: number) =>
@@ -31,7 +32,7 @@ const COLORS = {
 
 type Pointer = { x: number; y: number };
 
-function NoiseSphere() {
+function NoiseSphere({ still }: { still: boolean }) {
   const material = useRef<ShaderMaterial>(null);
   const uniforms = useMemo(
     () => ({
@@ -45,7 +46,8 @@ function NoiseSphere() {
   );
 
   useFrame((_, delta) => {
-    if (material.current) material.current.uniforms.uTime.value += delta;
+    if (still || !material.current) return;
+    material.current.uniforms.uTime.value += delta;
   });
 
   return (
@@ -61,7 +63,7 @@ function NoiseSphere() {
   );
 }
 
-function Particles({ count }: { count: number }) {
+function Particles({ count, still }: { count: number; still: boolean }) {
   const material = useRef<ShaderMaterial>(null);
 
   const attributes = useMemo(() => {
@@ -93,8 +95,8 @@ function Particles({ count }: { count: number }) {
 
   useFrame((state, delta) => {
     if (!material.current) return;
-    material.current.uniforms.uTime.value += delta;
     material.current.uniforms.uPixelRatio.value = state.viewport.dpr;
+    if (!still) material.current.uniforms.uTime.value += delta;
   });
 
   return (
@@ -129,16 +131,19 @@ function Particles({ count }: { count: number }) {
 function Scene({
   pointer,
   particleCount,
+  still,
 }: {
   pointer: React.RefObject<Pointer>;
   particleCount: number;
+  /** 動きを減らす設定のとき。揺らぎ・傾き・沈み込みを止めて静止画にする */
+  still: boolean;
 }) {
   const group = useRef<Group>(null);
   const particles = useRef<Group>(null);
 
   useFrame((_, delta) => {
     const g = group.current;
-    if (!g) return;
+    if (!g || still) return;
 
     // マウスの位置へ緩やかに傾ける
     const ease = 1 - Math.exp(-delta * 2);
@@ -155,9 +160,9 @@ function Scene({
 
   return (
     <group ref={group}>
-      <NoiseSphere />
+      <NoiseSphere still={still} />
       <group ref={particles}>
-        <Particles count={particleCount} />
+        <Particles count={particleCount} still={still} />
       </group>
     </group>
   );
@@ -168,6 +173,7 @@ export default function HeroScene() {
   const pointer = useRef<Pointer>({ x: 0, y: 0 });
   const [visible, setVisible] = useState(true);
   const [ready, setReady] = useState(false);
+  const still = useMediaQuery(REDUCED_MOTION);
   const [compact] = useState(
     () => window.matchMedia("(width < 48rem)").matches,
   );
@@ -194,12 +200,13 @@ export default function HeroScene() {
   return (
     <div
       ref={container}
-      className={`size-full transition-opacity duration-[1500ms] ease-out ${ready ? "opacity-100" : "opacity-0"}`}
+      className={`size-full transition-opacity duration-[1500ms] ease-out motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
     >
       <Canvas
         camera={{ position: [0, 0, 5.2], fov: 35 }}
         dpr={compact ? [1, 1.5] : [1, 2]}
-        frameloop={visible ? "always" : "never"}
+        // 静止画のときは、サイズが変わったときなどに必要な分だけ描く
+        frameloop={still ? "demand" : visible ? "always" : "never"}
         gl={{
           antialias: true,
           alpha: true,
@@ -207,7 +214,11 @@ export default function HeroScene() {
         }}
         onCreated={() => setReady(true)}
       >
-        <Scene pointer={pointer} particleCount={compact ? 120 : 260} />
+        <Scene
+          pointer={pointer}
+          particleCount={compact ? 120 : 260}
+          still={still}
+        />
       </Canvas>
     </div>
   );
