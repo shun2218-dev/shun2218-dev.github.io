@@ -2,7 +2,10 @@
 export const site = {
   name: "shun2218",
   owner: "shun2218-dev",
-  description: "shun2218 のポートフォリオサイト",
+  // 独自ドメインを取得したら差し替える（OGP・サイトマップの絶対 URL に使う）
+  url: "https://shun2218-dev.github.io",
+  description:
+    "フロントエンドエンジニア shun2218 のポートフォリオ。Next.js と TypeScript で作った Web アプリケーションを紹介しています。",
   githubUrl: "https://github.com/shun2218-dev",
   nav: [
     { label: "About", href: "/#about" },
