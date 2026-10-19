@@ -4,6 +4,7 @@ import {
   JetBrains_Mono,
   Noto_Sans_JP,
 } from "next/font/google";
+import { Cursor } from "@/components/cursor/Cursor";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/scroll/SmoothScroll";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body>
         <SmoothScroll />
+        <Cursor />
         <Header />
         {children}
         <Footer />
