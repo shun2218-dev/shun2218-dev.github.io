@@ -98,6 +98,12 @@
     color: var(--color-accent);
   }
 
+  /* カスタムカーソル（src/components/cursor）が動いているあいだは OS のカーソルを隠す */
+  .custom-cursor,
+  .custom-cursor * {
+    cursor: none;
+  }
+
   :focus-visible {
     outline: 1px solid var(--color-accent);
     outline-offset: 4px;
