@@ -16,6 +16,13 @@ export const site = {
     tagline: "確かな設計と、手触りのいいインターフェースを。",
     scroll: "Scroll",
   },
+  // 仮置きの自己紹介
+  about: {
+    no: "01",
+    title: "About",
+    lead: "フロントエンドを中心に、Next.js と TypeScript で Web アプリケーションを作っています。",
+    body: "テスト、CI、パフォーマンスまで含めて、長く保守できるプロダクトづくりを大切にしています。設計の判断は ADR に残し、触って気持ちのいい UI と、それを支える堅い土台の両方を目指しています。",
+  },
   labels: {
     mainNav: "メイン",
     mobileNav: "メニュー",
