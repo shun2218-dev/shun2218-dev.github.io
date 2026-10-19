@@ -23,7 +23,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 
 - `pnpm dev` / `pnpm build`（`out/` に static export）/ `pnpm lint`（Biome）/ `pnpm typecheck` / `pnpm test`（Vitest）
 - Next.js 16 は学習データと API が異なる場合がある。コードを書く前に `node_modules/next/dist/docs/` の該当ガイドを読む（`AGENTS.md`）
-- 作品データは `content/works/<slug>.md`（frontmatter 付き Markdown）。`order` の昇順で一覧に並び、番号は自動で振られる
+- 作品データは `content/works/<slug>.md` の frontmatter（項目は `src/lib/works.ts` の `Work` 型）。`order` の昇順で一覧に並び、番号は自動で振られる。詳細ページ `/works/<slug>/` もここから生成する
 - static export のため Cache Components・Server Actions・Route Handlers・画像最適化などのサーバー機能は使わない
 
 ## タスク管理（Linear）

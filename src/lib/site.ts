@@ -66,6 +66,23 @@ export const site = {
     title: "Works",
     count: (n: number) => `${n} PROJECTS`,
   },
+  workDetail: {
+    back: "Back to Works",
+    meta: {
+      type: "Type",
+      role: "Role",
+      site: "Site",
+      repository: "Repository",
+    },
+    repositoryLink: "GitHub",
+    none: "なし",
+    stack: "Stack",
+    overview: "Overview",
+    features: "Features",
+    highlights: "Highlights",
+    next: (no: string) => `Next Project — ${no}`,
+    newTab: "（新しいタブで開く）",
+  },
   labels: {
     mainNav: "メイン",
     mobileNav: "メニュー",

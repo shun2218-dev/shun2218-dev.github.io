@@ -1,5 +1,25 @@
 import { describe, expect, it } from "vitest";
-import { getWorks, parseWork } from "./works";
+import { getWork, getWorks, parseWork } from "./works";
+
+const sample = `---
+title: sample
+order: 1
+summary: 概要
+tags: [Go]
+lead: リード文
+type: Web アプリケーション
+role: 設計・実装
+stack: [Go, Redis]
+overview:
+  - 段落 1
+features:
+  - title: 機能
+    body: 説明
+highlights:
+  - 工夫 1
+  - 工夫 2
+---
+`;
 
 describe("getWorks", () => {
   it("content/works の作品を order 順に読み、番号を振る", () => {
@@ -19,24 +39,31 @@ describe("getWorks", () => {
   });
 });
 
+describe("getWork", () => {
+  it("次の作品を返し、最後の作品の次は最初に戻る", () => {
+    expect(getWork("hibari")?.next.slug).toBe("ichirizuka");
+    expect(getWork("pylabo")?.next.slug).toBe("pdf-merge-app");
+    expect(getWork("missing")).toBeUndefined();
+  });
+});
+
 describe("parseWork", () => {
-  it("frontmatter と本文を分けて読む", () => {
-    const work = parseWork(
-      "sample.md",
-      "---\ntitle: sample\norder: 1\nsummary: 概要\ntags: [Go]\n---\n\n本文\n",
-    );
-    expect(work).toMatchObject({
+  it("frontmatter を読む", () => {
+    expect(parseWork("sample.md", sample)).toMatchObject({
       slug: "sample",
-      title: "sample",
-      tags: ["Go"],
-      body: "本文",
+      stack: ["Go", "Redis"],
+      features: [{ title: "機能", body: "説明" }],
+      highlights: ["工夫 1", "工夫 2"],
     });
   });
 
   it("必須項目が欠けていればファイル名つきで失敗する", () => {
     expect(() =>
-      parseWork("broken.md", "---\ntitle: broken\norder: 1\ntags: []\n---\n"),
+      parseWork("broken.md", sample.replace("summary: 概要\n", "")),
     ).toThrow("content/works/broken.md: summary");
+    expect(() =>
+      parseWork("broken.md", sample.replace(/features:\n.*\n.*\n/, "")),
+    ).toThrow("features");
     expect(() => parseWork("none.md", "本文だけ")).toThrow("frontmatter");
   });
 });

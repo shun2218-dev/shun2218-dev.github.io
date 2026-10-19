@@ -6,7 +6,7 @@ import { ScreenshotPlaceholder } from "@/components/works/ScreenshotPlaceholder"
 import type { Work } from "@/lib/works";
 
 type Props = {
-  work: Omit<Work, "body">;
+  work: Pick<Work, "slug" | "no" | "title" | "summary" | "tags">;
 };
 
 const TILT = "(hover: hover) and (prefers-reduced-motion: no-preference)";
