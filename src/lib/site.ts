@@ -61,6 +61,11 @@ export const site = {
       { label: "Tools", items: ["Git / GitHub", "Linear", "Figma"] },
     ],
   },
+  works: {
+    no: "03",
+    title: "Works",
+    count: (n: number) => `${n} PROJECTS`,
+  },
   labels: {
     mainNav: "メイン",
     mobileNav: "メニュー",
