@@ -1,4 +1,5 @@
 import { HeroCanvas } from "@/components/hero/HeroCanvas";
+import { Parallax } from "@/components/scroll/Parallax";
 import { site } from "@/lib/site";
 
 export function Hero() {
@@ -11,10 +12,16 @@ export function Hero() {
         aria-hidden="true"
         className="absolute top-10 left-1/2 size-[420px] -translate-x-1/2 md:top-1/2 md:right-[-40px] md:left-auto md:size-[760px] md:translate-x-0 md:-translate-y-1/2"
       >
-        <HeroCanvas />
+        {/* 3D は文字より遅らせて奥に見せる */}
+        <Parallax speed={1.6} className="size-full">
+          <HeroCanvas />
+        </Parallax>
       </div>
 
-      <div className="relative flex max-w-[760px] flex-col gap-5 md:gap-8">
+      <Parallax
+        speed={0.8}
+        className="relative flex max-w-[760px] flex-col gap-5 md:gap-8"
+      >
         <p className="font-mono text-[11px] tracking-eyebrow text-accent uppercase md:text-xs">
           <span className="md:hidden">{site.hero.eyebrowShort}</span>
           <span className="hidden md:inline">{site.hero.eyebrow}</span>
@@ -27,7 +34,7 @@ export function Hero() {
         <p className="max-w-[460px] text-[15px] leading-relaxed text-text-sub md:text-lg">
           {site.hero.tagline}
         </p>
-      </div>
+      </Parallax>
 
       <div className="absolute bottom-12 left-page hidden items-center gap-4 font-mono text-[11px] tracking-eyebrow text-text-muted uppercase md:flex">
         <span className="block h-14 w-px bg-linear-to-b from-accent to-transparent" />
