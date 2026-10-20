@@ -10,6 +10,13 @@ export type Feature = {
   body: string;
 };
 
+export type Screenshots = {
+  /** 作品詳細のメイン画像の代替テキスト */
+  main: string;
+  /** 補足画像 2 枚の代替テキスト */
+  sub: [string, string];
+};
+
 export type Work = {
   slug: string;
   /** 一覧での番号（01, 02, ...）。order の昇順に振る */
@@ -28,6 +35,8 @@ export type Work = {
   overview: string[];
   features: Feature[];
   highlights: string[];
+  /** 画像そのものは public/works/<slug>/ に置く（src/lib/screenshots.ts） */
+  screenshots: Screenshots;
 };
 
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/;
@@ -68,7 +77,7 @@ export function parseWork(file: string, source: string) {
     return value;
   };
 
-  const { order, features } = record;
+  const { order, features, screenshots } = record;
   if (typeof order !== "number") fail(file, "order は数値にしてください");
   if (
     !Array.isArray(features) ||
@@ -79,6 +88,17 @@ export function parseWork(file: string, source: string) {
     )
   )
     fail(file, "features は title と body を持つ項目の配列にしてください");
+  const shots = screenshots as Partial<Screenshots> | undefined;
+  if (
+    typeof shots?.main !== "string" ||
+    shots.main === "" ||
+    !isStringArray(shots.sub) ||
+    shots.sub.length !== 2
+  )
+    fail(
+      file,
+      "screenshots は main（文字列）と sub（2 つの文字列）を持たせてください",
+    );
 
   return {
     slug: file.replace(/\.md$/, ""),
@@ -95,6 +115,10 @@ export function parseWork(file: string, source: string) {
     overview: strings("overview"),
     features: features.map(({ title, body }: Feature) => ({ title, body })),
     highlights: strings("highlights"),
+    screenshots: {
+      main: shots.main,
+      sub: [shots.sub[0], shots.sub[1]] as [string, string],
+    },
   };
 }
 

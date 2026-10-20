@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/scroll/Reveal";
-import { ScreenshotPlaceholder } from "@/components/works/ScreenshotPlaceholder";
+import { Screenshot } from "@/components/works/Screenshot";
 import { site } from "@/lib/site";
 import type { Work } from "@/lib/works";
 
@@ -128,9 +128,11 @@ export function WorkDetail({ work, next }: Props) {
 
       <Reveal className="py-12 md:py-18">
         <div className="overflow-hidden border border-white/8">
-          <ScreenshotPlaceholder
-            label="[SCREENSHOT — MAIN]"
-            className="aspect-video md:text-xs"
+          <Screenshot
+            slug={work.slug}
+            kind="main"
+            alt={work.screenshots.main}
+            eager
           />
         </div>
       </Reveal>
@@ -176,12 +178,18 @@ export function WorkDetail({ work, next }: Props) {
           <Article title={t.highlights}>
             <Paragraphs items={work.highlights} />
             <div className="grid grid-cols-2 gap-3 pt-4 md:gap-6">
-              <div className="overflow-hidden border border-white/8">
-                <ScreenshotPlaceholder className="aspect-4/3" />
-              </div>
-              <div className="overflow-hidden border border-white/8">
-                <ScreenshotPlaceholder className="aspect-4/3" />
-              </div>
+              {(["sub-1", "sub-2"] as const).map((kind, index) => (
+                <div
+                  key={kind}
+                  className="overflow-hidden border border-white/8"
+                >
+                  <Screenshot
+                    slug={work.slug}
+                    kind={kind}
+                    alt={work.screenshots.sub[index]}
+                  />
+                </div>
+              ))}
             </div>
           </Article>
         </div>

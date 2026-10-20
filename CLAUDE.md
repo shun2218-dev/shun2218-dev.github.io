@@ -26,6 +26,9 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - 和文フォント（Noto Sans JP）は、`pnpm dev` / `pnpm build` の前に `scripts/subset-fonts.mjs` が content/ と src/ の文字だけでサブセットを作り `public/fonts/generated/` に置く（git 管理外）。dev 中に新しい漢字を足したら `pnpm fonts` を実行し直す
 - Next.js 16 は学習データと API が異なる場合がある。コードを書く前に `node_modules/next/dist/docs/` の該当ガイドを読む（`AGENTS.md`）
 - 作品データは `content/works/<slug>.md` の frontmatter（項目は `src/lib/works.ts` の `Work` 型）。`order` の昇順で一覧に並び、番号は自動で振られる。詳細ページ `/works/<slug>/` もここから生成する
+- 作品のスクリーンショットは `public/works/<slug>/` の WebP（`pnpm screenshots <元画像のフォルダ>` が 2x の PNG から幅ごとに書き出す。幅と比率は `src/lib/screenshots.ts`）。元画像は git に入れない。代替テキストは frontmatter の `screenshots`
+  - ichirizuka は本人のランニング記録が入っているため、必ずダミーデータで撮る。`.env.local` のない複製で、`SHEET_CSV_URL` / `SHEET_DAILY_CSV_URL` / `SHEET_FIT_CSV_URL` / `SHEET_SETTINGS_CSV_URL` の 4 つすべてをダミー CSV の URL にして起動する
+  - hibari は Storybook（モックデータ）の画面を撮る
 - static export のため Cache Components・Server Actions・Route Handlers・画像最適化などのサーバー機能は使わない
 
 ## タスク管理（Linear）
@@ -53,7 +56,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - フォント: 英字見出し Cormorant Garamond 300（ロゴのみ 500）、和文 Noto Sans JP 300、ラベル・番号 JetBrains Mono
   - Syne は太く丸く見えてシックさに欠けるため不採用。見出しは細身で統一する
 - 薄い縦グリッド線（6 分割）、セクション番号 01/02/03、広い余白
-- 仮置き: キャッチコピー・About 文・スクリーンショット
+- 仮置き: キャッチコピー・About 文
 
 ## 確定事項
 

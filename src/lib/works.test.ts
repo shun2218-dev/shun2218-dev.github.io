@@ -18,6 +18,9 @@ features:
 highlights:
   - 工夫 1
   - 工夫 2
+screenshots:
+  main: メイン
+  sub: [補足 1, 補足 2]
 ---
 `;
 
@@ -54,6 +57,7 @@ describe("parseWork", () => {
       stack: ["Go", "Redis"],
       features: [{ title: "機能", body: "説明" }],
       highlights: ["工夫 1", "工夫 2"],
+      screenshots: { main: "メイン", sub: ["補足 1", "補足 2"] },
     });
   });
 
@@ -64,6 +68,9 @@ describe("parseWork", () => {
     expect(() =>
       parseWork("broken.md", sample.replace(/features:\n.*\n.*\n/, "")),
     ).toThrow("features");
+    expect(() =>
+      parseWork("broken.md", sample.replace("[補足 1, 補足 2]", "[補足 1]")),
+    ).toThrow("screenshots");
     expect(() => parseWork("none.md", "本文だけ")).toThrow("frontmatter");
   });
 });
