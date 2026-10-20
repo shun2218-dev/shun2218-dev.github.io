@@ -126,8 +126,7 @@ export function WorkDetail({ work, next }: Props) {
         ))}
       </dl>
 
-      {/* メイン画像は最初の画面に入り LCP になるため、フェードインさせずにすぐ表示する */}
-      <div className="py-12 md:py-18">
+      <Reveal className="py-12 md:py-18">
         <div className="overflow-hidden border border-white/8">
           <Screenshot
             slug={work.slug}
@@ -136,7 +135,7 @@ export function WorkDetail({ work, next }: Props) {
             eager
           />
         </div>
-      </div>
+      </Reveal>
 
       <section className="flex flex-col gap-14 pb-20 md:grid md:grid-cols-12 md:gap-x-6 md:pt-12 md:pb-30">
         <aside className="flex flex-col gap-5 md:sticky md:top-30 md:col-span-3 md:self-start">
