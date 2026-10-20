@@ -39,7 +39,25 @@ export function HeroCanvas() {
   const [webgl, setWebgl] = useState<boolean>();
 
   useEffect(() => {
-    setWebgl(supportsWebGL());
+    // three.js の読み込みと初期化は重いため、ページの読み込みが終わってブラウザが空いてから始める
+    // requestIdleCallback がない環境（Safari など）では少し待ってから始める
+    let cancel = () => {};
+    const start = () => {
+      const run = () => setWebgl(supportsWebGL());
+      if ("requestIdleCallback" in window) {
+        const id = window.requestIdleCallback(run, { timeout: 2000 });
+        cancel = () => window.cancelIdleCallback(id);
+      } else {
+        const id = setTimeout(run, 200);
+        cancel = () => clearTimeout(id);
+      }
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      cancel();
+    };
   }, []);
 
   if (webgl === undefined) return null;

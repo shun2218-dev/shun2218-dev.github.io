@@ -43,7 +43,7 @@
 | 和文・本文 | Noto Sans JP | 300（作品詳細の機能名のみ 400） |
 | ラベル・番号・ナビ・タグ | JetBrains Mono | 400 |
 
-Google Fonts から読み込むウェイトは上記のみ（Cormorant Garamond 300 / 500、Noto Sans JP 300 / 400、JetBrains Mono 400）。
+読み込むウェイトは上記のみ（Cormorant Garamond 300 / 500、Noto Sans JP 300 / 400、JetBrains Mono 400）。Noto Sans JP はサイトで使う文字だけに絞ったサブセットを自前で配信する（`scripts/subset-fonts.mjs`）。
 
 ### サイズ（Desktop / Mobile）
 

@@ -22,6 +22,8 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 ## コマンド
 
 - `pnpm dev` / `pnpm build`（`out/` に static export）/ `pnpm lint`（Biome）/ `pnpm typecheck` / `pnpm test`（Vitest）
+- `pnpm lhci`: `out/` を Lighthouse CI で測る（予算は `lighthouserc.json`、モバイルで Performance 0.9・Accessibility 0.95 以上）。CI の「Lighthouse」ジョブでも実行する。手元で何十回も回すとローカルのポートが枯渇することがあるため、回数を絞る
+- 和文フォント（Noto Sans JP）は、`pnpm dev` / `pnpm build` の前に `scripts/subset-fonts.mjs` が content/ と src/ の文字だけでサブセットを作り `public/fonts/generated/` に置く（git 管理外）。dev 中に新しい漢字を足したら `pnpm fonts` を実行し直す
 - Next.js 16 は学習データと API が異なる場合がある。コードを書く前に `node_modules/next/dist/docs/` の該当ガイドを読む（`AGENTS.md`）
 - 作品データは `content/works/<slug>.md` の frontmatter（項目は `src/lib/works.ts` の `Work` 型）。`order` の昇順で一覧に並び、番号は自動で振られる。詳細ページ `/works/<slug>/` もここから生成する
 - static export のため Cache Components・Server Actions・Route Handlers・画像最適化などのサーバー機能は使わない

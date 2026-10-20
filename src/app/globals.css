@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+/*
+ * 和文。scripts/subset-fonts.mjs がサイトで使う文字だけに絞って作る（dev / build の前に毎回）。
+ * next/font/google の Noto Sans JP は @font-face が 249 個あり、その CSS が描画をブロックするため使わない（SHU-20）
+ */
+@font-face {
+  font-family: "Noto Sans JP Subset";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/generated/noto-sans-jp-300.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans JP Subset";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/generated/noto-sans-jp-400.woff2") format("woff2");
+}
+
 /* デザイントークン。値と用途は docs/design.md と揃える */
 @theme {
   --color-background: #0a0a0a;
@@ -46,7 +66,7 @@
 /* next/font が html に置く CSS 変数を参照するため inline で定義する */
 @theme inline {
   --font-display: var(--font-cormorant), serif;
-  --font-sans: var(--font-noto-sans-jp), sans-serif;
+  --font-sans: "Noto Sans JP Subset", "Hiragino Sans", "Yu Gothic", sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
 
   --spacing-page: var(--page-gutter);
