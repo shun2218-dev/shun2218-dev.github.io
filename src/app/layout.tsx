@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Cormorant_Garamond,
-  JetBrains_Mono,
-  Noto_Sans_JP,
-} from "next/font/google";
+import { Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import { Cursor } from "@/components/cursor/Cursor";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -19,16 +15,10 @@ const cormorant = Cormorant_Garamond({
   weight: ["300", "500"],
 });
 
-// 和文はファイルが大きいため preload しない
-const notoSansJp = Noto_Sans_JP({
-  variable: "--font-noto-sans-jp",
-  subsets: ["latin"],
-  weight: ["300", "400"],
-  preload: false,
-});
-
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
+  // ラベルや番号にしか使わず、最初の描画を待たせるほどではないため先読みしない
+  preload: false,
   subsets: ["latin"],
   weight: "400",
 });
@@ -55,8 +45,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ja"
-      className={`${cormorant.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}
+      className={`${cormorant.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        {/* 和文（globals.css の @font-face）。本文の 300 だけ先読みし、作品詳細の機能名にしか使わない 400 は待つ */}
+        <link
+          rel="preload"
+          href="/fonts/generated/noto-sans-jp-300.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <SmoothScroll />
         <Cursor />

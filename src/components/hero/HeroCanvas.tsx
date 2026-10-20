@@ -9,10 +9,21 @@ const HeroScene = dynamic(() => import("@/components/hero/HeroScene"), {
   ssr: false,
 });
 
+// SwiftShader（Chrome）や llvmpipe（Mesa）など、GPU を使わずソフトウェアで描画する実装
+const SOFTWARE_RENDERER = /swiftshader|llvmpipe|softpipe|software/i;
+
 function supportsWebGL() {
   try {
     const canvas = document.createElement("canvas");
-    return Boolean(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
+    const gl = canvas.getContext("webgl2") ?? canvas.getContext("webgl");
+    if (!gl) return false;
+    // ソフトウェア描画では毎フレームの描画がメインスレッドを塞ぐため 3D を出さない
+    const info = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = String(
+      gl.getParameter(info ? info.UNMASKED_RENDERER_WEBGL : gl.RENDERER),
+    );
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return !SOFTWARE_RENDERER.test(renderer);
   } catch {
     return false;
   }
@@ -39,7 +50,25 @@ export function HeroCanvas() {
   const [webgl, setWebgl] = useState<boolean>();
 
   useEffect(() => {
-    setWebgl(supportsWebGL());
+    // three.js の読み込みと初期化は重いため、ページの読み込みが終わってブラウザが空いてから始める
+    // requestIdleCallback がない環境（Safari など）では少し待ってから始める
+    let cancel = () => {};
+    const start = () => {
+      const run = () => setWebgl(supportsWebGL());
+      if ("requestIdleCallback" in window) {
+        const id = window.requestIdleCallback(run, { timeout: 2000 });
+        cancel = () => window.cancelIdleCallback(id);
+      } else {
+        const id = setTimeout(run, 200);
+        cancel = () => clearTimeout(id);
+      }
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      cancel();
+    };
   }, []);
 
   if (webgl === undefined) return null;

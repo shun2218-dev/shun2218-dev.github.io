@@ -20,3 +20,9 @@ coverage/
 .DS_Store
 *.log
 *.pem
+
+# scripts/subset-fonts.mjs が生成するフォントのサブセット
+/public/fonts/generated/
+
+# Lighthouse CI
+/.lighthouseci/

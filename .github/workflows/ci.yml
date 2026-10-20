@@ -41,3 +41,35 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+  lighthouse:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      # 予算（モバイルで Performance 0.9 以上・Accessibility 0.95 以上）は lighthouserc.json。
+      # ubuntu-latest に入っている Google Chrome で、out/ を静的に配信して測る
+      - name: Lighthouse CI
+        run: pnpm lhci
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/reports
+          retention-days: 14

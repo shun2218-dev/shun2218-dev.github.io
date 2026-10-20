@@ -13,9 +13,14 @@ vi.mock("next/dynamic", () => ({
     },
 }));
 
-function mockWebGL(supported: boolean) {
+function mockWebGL(supported: boolean, renderer = "Apple M2") {
+  const gl = {
+    RENDERER: 0x1f01,
+    getExtension: () => null,
+    getParameter: () => renderer,
+  };
   vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(
-    supported ? ({} as RenderingContext) : null,
+    supported ? (gl as unknown as RenderingContext) : null,
   );
 }
 
@@ -36,6 +41,12 @@ describe("HeroCanvas", () => {
     render(<HeroCanvas />);
     expect(await screen.findByTestId("hero-fallback")).toBeInTheDocument();
     expect(screen.queryByTestId("hero-scene")).toBeNull();
+  });
+
+  it("GPU を使わないソフトウェア描画なら静的な表示に切り替える", async () => {
+    mockWebGL(true, "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device))");
+    render(<HeroCanvas />);
+    expect(await screen.findByTestId("hero-fallback")).toBeInTheDocument();
   });
 
   it("3D の描画に失敗したときも静的な表示に切り替える", async () => {
