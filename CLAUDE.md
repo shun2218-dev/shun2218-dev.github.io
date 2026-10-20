@@ -22,6 +22,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 ## コマンド
 
 - `pnpm dev` / `pnpm build`（`out/` に static export）/ `pnpm lint`（Biome）/ `pnpm typecheck` / `pnpm test`（Vitest）
+- `pnpm e2e`: Playwright の E2E テスト（`e2e/`）。`pnpm build` 済みの `out/` を `e2e/serve.mjs`（GitHub Pages と同じく、末尾スラッシュへの 301 と 404.html を返す）で配信し、デスクトップ幅とモバイル幅の Chromium で確かめる。初回は `pnpm exec playwright install chromium`。CI の「E2E」ジョブでも実行する。スクロールで現れる要素（Reveal）は画面に入るまで隠れているため、`e2e/helpers.ts` の `scrollTo` で画面まで送ってから操作する
 - `pnpm lhci`: `out/` を Lighthouse CI で測る（予算は `lighthouserc.json`、モバイルで Performance 0.9・Accessibility 0.95 以上）。CI の「Lighthouse」ジョブでも実行する。手元で何十回も回すとローカルのポートが枯渇することがあるため、回数を絞る
 - 和文フォント（Noto Sans JP）は、`pnpm dev` / `pnpm build` の前に `scripts/subset-fonts.mjs` が content/ と src/ の文字だけでサブセットを作り `public/fonts/generated/` に置く（git 管理外）。dev 中に新しい漢字を足したら `pnpm fonts` を実行し直す
 - Next.js 16 は学習データと API が異なる場合がある。コードを書く前に `node_modules/next/dist/docs/` の該当ガイドを読む（`AGENTS.md`）
