@@ -19,7 +19,7 @@ describe("Home", () => {
       screen.getByText("Frontend Engineer — Portfolio"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("確かな設計と、手触りのいいインターフェースを。"),
+      screen.getByText("速さは AI と。確かさは、設計と仕組みで。"),
     ).toBeInTheDocument();
   });
 });
