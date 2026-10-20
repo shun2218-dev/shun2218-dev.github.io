@@ -12,7 +12,12 @@ const HeroScene = dynamic(() => import("@/components/hero/HeroScene"), {
 function supportsWebGL() {
   try {
     const canvas = document.createElement("canvas");
-    return Boolean(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
+    // GPU がなくソフトウェアで描画する環境では、毎フレームの描画がメインスレッドを塞ぐため 3D を出さない
+    const options = { failIfMajorPerformanceCaveat: true };
+    return Boolean(
+      canvas.getContext("webgl2", options) ??
+        canvas.getContext("webgl", options),
+    );
   } catch {
     return false;
   }
