@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { type PointerEvent, useRef } from "react";
-import { ScreenshotPlaceholder } from "@/components/works/ScreenshotPlaceholder";
+import { Screenshot } from "@/components/works/Screenshot";
 import type { Work } from "@/lib/works";
 
 type Props = {
@@ -86,7 +86,13 @@ export function WorkCard({ work }: Props) {
         className="-order-1 transition-transform duration-700 ease-out motion-reduce:transition-none md:order-none md:col-span-5 md:col-start-8"
       >
         <div className="overflow-hidden border border-white/8">
-          <ScreenshotPlaceholder className="aspect-16/10 transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
+          <Screenshot
+            slug={work.slug}
+            kind="card"
+            // 隣の作品名と概要で内容が分かるため読み上げない
+            alt=""
+            className="transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+          />
         </div>
       </div>
     </Link>

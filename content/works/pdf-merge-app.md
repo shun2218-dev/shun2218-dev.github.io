@@ -24,4 +24,9 @@ features:
 highlights:
   - 結合は Web Worker で行い、ファイルの中身はコピーせずに Worker へ渡す。pdf-lib（gzip で約 175 KB）は Worker を作ったときに初めて読み込むため、最初の表示を重くしない。PDF かどうかは拡張子ではなく先頭のバイトで判定する。
   - PR ごとに lint・型チェック・ユニットテスト・Storybook のインタラクションテスト・E2E・Lighthouse CI を実行する。E2E では結合中に PDF を含むリクエストが 1 件も出ないことまで検査し、設計判断は 30 件を超える ADR として残している。
+screenshots:
+  main: 3 つの PDF を読み込み、結合する順番を並べ替える画面
+  sub:
+    - 結合した PDF をページ内でプレビューしている画面
+    - PDF をドラッグ＆ドロップで読み込む最初の画面
 ---
