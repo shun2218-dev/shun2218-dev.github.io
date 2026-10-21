@@ -45,7 +45,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - ブランチ名に Issue ID を含める（例: `shu-7-setup`）
 - PR 本文に `Fixes SHU-xx` を書き、マージ時に自動クローズ（Linear の GitHub 連携は有効）
 - コミット・PR は日本語タイトル可。Conventional Commits 風の prefix（`docs:`, `chore:`, `feat:` など）
-- `main` はブランチ保護あり（管理者にも適用）: 直接 push 不可、PR 経由でのみマージ（承認 0 件で可）、CI「Lint / Typecheck / Test / Build」の成功とコメントの解決が必須、force push・削除は禁止
+- `main` はブランチ保護あり（管理者にも適用）: 直接 push 不可、PR 経由でのみマージ（承認 0 件で可）、CI「Lint / Typecheck / Test / Build」と「E2E」の成功とコメントの解決が必須（「Lighthouse」は目安で必須にしない）、force push・削除は禁止
 - マージは squash
 
 ## デザイン（SHU-6、承認済み）
@@ -57,7 +57,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - フォント: 英字見出し Cormorant Garamond 300（ロゴのみ 500）、和文 Noto Sans JP 300、ラベル・番号 JetBrains Mono
   - Syne は太く丸く見えてシックさに欠けるため不採用。見出しは細身で統一する
 - 薄い縦グリッド線（6 分割）、セクション番号 01/02/03、広い余白
-- 仮置き: キャッチコピー・About 文
+- 文言（キャッチコピー・About など）は `src/lib/site.ts`。キャッチコピーは「速さは AI と。確かさは、設計と仕組みで。」（SHU-33 で確定）
 
 ## 確定事項
 
@@ -70,7 +70,4 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
 - 技術: Next.js（App Router, static export）+ TypeScript、React Three Fiber、GSAP + Lenis、Tailwind CSS、Biome、Vitest、Playwright、pnpm、GitHub Actions で Pages デプロイ
 - `package.json` の name は `shun2218-dev.github.io`（Linear のプロジェクト名は「Portfolio Site」のまま）
 - Hero の 3D はノイズで揺らぐ球体＋パーティクル
-
-## 未決事項
-
-- 独自ドメイン: `shun2218.dev` を推奨済み（ユーザーが購入予定）。取得後に CNAME と DNS 設定を用意する
+- 独自ドメインは使わない（2026-10-21 決定）。公開 URL は `https://shun2218-dev.github.io/` のまま

@@ -6,7 +6,7 @@
 
 ## 公開
 
-- URL: `https://shun2218-dev.github.io/`（独自ドメインは後日取得して切り替え）
+- URL: `https://shun2218-dev.github.io/`（独自ドメインは使わない）
 - ホスティング: GitHub Pages（GitHub Actions でビルド・デプロイ）
 - 言語: 日本語のみ（将来の英語対応を見越し、文言はコンポーネントに直書きせずデータ側にまとめる）
 

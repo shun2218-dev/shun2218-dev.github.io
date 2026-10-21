@@ -28,7 +28,6 @@
   --color-text-sub: #b8b5ae;
   --color-text-body: #a3a09a;
   --color-text-muted: #8a8780;
-  /* スクリーンショットの仮置きラベルなど装飾専用。本文には使わない */
   --color-accent: #c9a96e;
   --color-border: rgb(255 255 255 / 0.06);
   --color-border-strong: rgb(255 255 255 / 0.1);

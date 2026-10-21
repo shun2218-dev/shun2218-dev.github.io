@@ -2,7 +2,7 @@
 export const site = {
   name: "shun2218",
   owner: "shun2218-dev",
-  // 独自ドメインを取得したら差し替える（OGP・サイトマップの絶対 URL に使う）
+  // OGP・サイトマップの絶対 URL に使う
   url: "https://shun2218-dev.github.io",
   description:
     "フロントエンドエンジニア shun2218 のポートフォリオ。Next.js と TypeScript で作った Web アプリケーションを紹介しています。",
@@ -15,16 +15,14 @@ export const site = {
   hero: {
     eyebrow: "Frontend Engineer — Portfolio",
     eyebrowShort: "Frontend Engineer",
-    // 仮置きのキャッチコピー
-    tagline: "確かな設計と、手触りのいいインターフェースを。",
+    tagline: "速さは AI と。確かさは、設計と仕組みで。",
     scroll: "Scroll",
   },
-  // 仮置きの自己紹介
   about: {
     no: "01",
     title: "About",
-    lead: "フロントエンドを中心に、Next.js と TypeScript で Web アプリケーションを作っています。",
-    body: "テスト、CI、パフォーマンスまで含めて、長く保守できるプロダクトづくりを大切にしています。設計の判断は ADR に残し、触って気持ちのいい UI と、それを支える堅い土台の両方を目指しています。",
+    lead: "2022 年に新卒でエンジニアになり、現在は SES で大手エンタメ系企業のフロントエンド開発に参画しています。",
+    body: "仕事のかたわら、自分で使うための道具を個人開発しています。Claude Code などの AI と並走して実装を進め、設計の判断は ADR に、品質はテストと CI に任せる。速く作ることと、長く保てることの両立を目指しています。",
   },
   skills: {
     no: "02",
