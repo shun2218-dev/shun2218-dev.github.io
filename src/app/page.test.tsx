@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import Home from "./page";
 
-// jsdom には WebGL がないため 3D は描画しない
-vi.mock("@/components/hero/HeroCanvas", () => ({ HeroCanvas: () => null }));
+// jsdom には canvas の描画がないため球体は描かない
+vi.mock("@/components/hero/AsciiSphere", () => ({ AsciiSphere: () => null }));
 
 describe("Home", () => {
   it("ハンドル名を見出しとして表示する", () => {
