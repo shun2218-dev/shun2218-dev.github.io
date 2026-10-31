@@ -1,4 +1,4 @@
-import { HeroCanvas } from "@/components/hero/HeroCanvas";
+import { AsciiSphere } from "@/components/hero/AsciiSphere";
 import { Parallax } from "@/components/scroll/Parallax";
 import { site } from "@/lib/site";
 
@@ -10,11 +10,11 @@ export function Hero() {
     >
       <div
         aria-hidden="true"
-        className="absolute top-10 left-1/2 size-[420px] -translate-x-1/2 md:top-1/2 md:right-[-40px] md:left-auto md:size-[760px] md:translate-x-0 md:-translate-y-1/2"
+        className="absolute top-0 left-1/2 size-[420px] -translate-x-1/2 md:top-1/2 md:right-[-40px] md:left-auto md:size-[760px] md:translate-x-0 md:-translate-y-1/2"
       >
-        {/* 3D は文字より遅らせて奥に見せる */}
+        {/* 球体は文字より遅らせて奥に見せる */}
         <Parallax speed={1.6} className="size-full">
-          <HeroCanvas />
+          <AsciiSphere />
         </Parallax>
       </div>
 

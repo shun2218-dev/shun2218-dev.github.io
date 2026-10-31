@@ -67,7 +67,7 @@ shun2218-dev のポートフォリオサイト（GitHub Pages のユーザーサ
   - ichirizuka: サイトリンクなし（スクショのみ）。サイト自体はあるが Basic 認証付きのため載せない
   - hibari: リポジトリリンク＋構成説明
   - pylabo: サイトリンク（https://pylabo.vercel.app）＋リポジトリリンク
-- 技術: Next.js（App Router, static export）+ TypeScript、React Three Fiber、GSAP + Lenis、Tailwind CSS、Biome、Vitest、Playwright、pnpm、GitHub Actions で Pages デプロイ
+- 技術: Next.js（App Router, static export）+ TypeScript、GSAP + Lenis、Tailwind CSS、Biome、Vitest、Playwright、pnpm、GitHub Actions で Pages デプロイ
 - `package.json` の name は `shun2218-dev.github.io`（Linear のプロジェクト名は「Portfolio Site」のまま）
-- Hero の 3D はノイズで揺らぐ球体＋パーティクル
+- Hero の球体は等幅の文字（ASCII）で canvas に描く（`src/lib/ascii-sphere.ts`）。案の比較は https://claude.ai/artifact/RqiL6u3CqtPtUv6yqgyedy （SHU-94 で 3D から変更。three.js は使わない）
 - 独自ドメインは使わない（2026-10-21 決定）。公開 URL は `https://shun2218-dev.github.io/` のまま
